@@ -1,7 +1,8 @@
 {
   "scripts": {
     "producer": "node ./producer/own-brands-service.js",
-    "consumer": "node ./consumer/crm-wrapper.js"
+    "consumer": "node ./consumer/crm-wrapper.js",
+    "test:consumer": "jest --testTimeout 30000 consumer/consumer-contract.spec.js --env=node"
   },
   "dependencies": {
     "express": "^4.17.1",
