@@ -3,13 +3,9 @@ const port = process.env.PORT || 3004;
 
 const app = express();
 
-const healthObject = {
-    status: 1,
-    isHealthy: true,
-    serviceName: "own brands service"
-};
 
 app.get('/health', (req, res) => {
+    console.log('verifyin own brands service health...');
     res.send("healthy");
 });
 

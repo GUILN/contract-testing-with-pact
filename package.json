@@ -1,4 +1,8 @@
 {
+  "scripts": {
+    "producer": "node ./producer/own-brands-service.js",
+    "consumer": "node ./consumer/crm-wrapper.js"
+  },
   "dependencies": {
     "express": "^4.17.1",
     "joi": "^17.4.2"
