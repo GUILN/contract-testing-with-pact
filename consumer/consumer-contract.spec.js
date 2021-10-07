@@ -1,10 +1,11 @@
 const { Pact } = require('@pact-foundation/pact');
 const { like, eachLike } = require('@pact-foundation/pact').Matchers;
 const { verifyOwnbrandsHealth } = require('./health-check');
+const producerPort = require('../config.json')['producer-port'];
 
 path = require('path');
 
-const PORT = 3004;
+const PORT = producerPort;
 
 const provider = new Pact({
     consumer: 'Consumer',

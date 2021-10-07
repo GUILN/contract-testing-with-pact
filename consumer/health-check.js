@@ -1,6 +1,7 @@
 const axios = require('axios');
+const producerPort = require('../config.json')['producer-port'];
 
-const ownBrandsServiceUrl = 'http://localhost:3004';
+const ownBrandsServiceUrl = `http://localhost:${producerPort}`;
 const healthEndpoint = '/health';
 
 const verifyOwnbrandsHealth = async () => {

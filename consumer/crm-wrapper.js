@@ -1,6 +1,7 @@
 const { verifyOwnbrandsHealth } = require('./health-check');
 const express = require('express');
-const port = process.env.PORT || 3002;
+const consumerPort = require('../config.json')['consumer-port'];
+const port = process.env.PORT || consumerPort;
 
 const app = express();
 

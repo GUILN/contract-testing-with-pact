@@ -1,5 +1,6 @@
 const express = require('express');
-const port = process.env.PORT || 3004;
+const producerPort = require('../config.json')['producer-port'];
+const port = process.env.PORT || producerPort;
 
 const app = express();
 
