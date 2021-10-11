@@ -2,7 +2,9 @@
   "scripts": {
     "producer": "node ./producer/own-brands-service.js",
     "consumer": "node ./consumer/crm-wrapper.js",
-    "test:consumer": "jest --testTimeout 30000 consumer/consumer-contract.spec.js --env=node"
+    "test:consumer": "jest --testTimeout 30000 consumer/consumer-contract.spec.js --env=node",
+    "test:provider": "export PACT_BROKER_URL=http://localhost:9292 && node producer/own-brands-service.js & jest producer/own-brands-provider.spec.js --testTimeout 30000",
+    "publish:pact": "export PACT_BROKER_URL=http://localhost:9292 && pact-broker publish ./pacts --consumer-app-version 1 --broker-base-url $PACT_BROKER_URL"
   },
   "dependencies": {
     "express": "^4.17.1",
