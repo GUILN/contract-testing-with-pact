@@ -20,4 +20,18 @@ All the services will only interact between themselves to make the `HealthCheck`
 
 # Steps to follow in order to simulate the workflow (I highly recomend you run this in a terminal multiplexer such as `Tmux` them you will be able to see the whole interaction)
 
+### Running consumer's contract test and Generating Consumer's PACT contract
+- 1 in root folder run `npm run test:consumer` - This will generate the pact contract for `Node` consumer
+- 2 `cd` into dotnet's service folder and run `dotnet test` this will generate pact contract for the dotnet `consumer`
+
+### Starting up PACT broker docker container and publishing PACTs that was generated in steps before
+
+### Running provider's contract tests
+
+### Changing provider's response and seeing the provider's contract testing failing (breaking the contract) 
+
+### Conclusion
+
+ - At this point you can go within two 
+
 ## Sequence Diagram to explain how the component flow of component testing should work
