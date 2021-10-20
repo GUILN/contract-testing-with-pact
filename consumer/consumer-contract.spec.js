@@ -19,7 +19,9 @@ const provider = new Pact({
 describe('Own Brands Service', () => {
     describe('When a request to health check endpoint is made', () => {
       beforeAll(() =>
+        // Arrange
         provider.setup().then(() => {
+
           provider.addInteraction({
             uponReceiving: 'a request to health check endpoint',
             withRequest: {
@@ -35,14 +37,15 @@ describe('Own Brands Service', () => {
           }); 
         })  
       );  
-  
+        
+      // Act
       test('should contain expected data format which is a string storing either: healthy or unhealthy values', async () => {
         const response = await verifyOwnbrandsHealth();
         expect(response).toBe('healthy');
       }); 
   
   
-  
+      // Assert
       afterEach(() => provider.verify());
       afterAll(() => provider.finalize());
     }); 

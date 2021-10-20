@@ -5,13 +5,13 @@ using Microsoft.Extensions.Logging;
 
 namespace CrmWrapperApi.Connector
 {
-    public class ProviderConnector
+    public class OwnBrandsConnector
     {
         private readonly string _ownbrandsEndpoint;
         private readonly ILogger _logger;
 
         private readonly HttpClient _httpClient = new HttpClient(); 
-        public ProviderConnector(string ownbrandsEndpoint, ILogger logger)
+        public OwnBrandsConnector(string ownbrandsEndpoint, ILogger logger)
         {
             _ownbrandsEndpoint = ownbrandsEndpoint;
             _logger = logger;

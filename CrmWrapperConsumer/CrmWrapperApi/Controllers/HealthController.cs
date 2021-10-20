@@ -15,16 +15,16 @@ namespace DefaultNamespace
     {
         private readonly ILogger<HealthController> _logger;
         private readonly IConfiguration _configuration;
-        private readonly ProviderConnector _providerConnector;
+        private readonly OwnBrandsConnector _ownBrandsConnector;
         private readonly List<Func<Task<string>>> _dependenciesHealthCheckFunctions;
         public HealthController(ILogger<HealthController> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
-            _providerConnector = new ProviderConnector(_configuration["CobrandsEndpoint"], _logger);
+            _ownBrandsConnector = new OwnBrandsConnector(_configuration["CobrandsEndpoint"], _logger);
             _dependenciesHealthCheckFunctions = new List<Func<Task<string>>>
             {
-                () =>  _providerConnector.CheckProvidersHealth(),
+                () =>  _ownBrandsConnector.CheckProvidersHealth(),
                 () => Task<string>.Run(() => "Healthy")
             };
         }
