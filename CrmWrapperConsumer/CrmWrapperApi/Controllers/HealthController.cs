@@ -16,29 +16,33 @@ namespace DefaultNamespace
         private readonly ILogger<HealthController> _logger;
         private readonly IConfiguration _configuration;
         private readonly ProviderConnector _providerConnector;
-        private readonly List<Func<string>> _dependenciesHealthCheckFunctions;
+        private readonly List<Func<Task<string>>> _dependenciesHealthCheckFunctions;
         public HealthController(ILogger<HealthController> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
             _providerConnector = new ProviderConnector(_configuration["CobrandsEndpoint"], _logger);
-            _dependenciesHealthCheckFunctions = new List<Func<string>>
+            _dependenciesHealthCheckFunctions = new List<Func<Task<string>>>
             {
-                () => "Healthy",
-                () => "Healthy",
-                () => _providerConnector.CheckProvidersHealth()
+                () =>  _providerConnector.CheckProvidersHealth(),
+                () => Task<string>.Run(() => "Healthy")
             };
         }
         [HttpGet]
-        public string Get()
+        public async Task<string> Get()
         {
             var health = new Health { HealthStatus = "healthy"};
-            
-            if (_dependenciesHealthCheckFunctions.Any(f => f() != "Healthy"))
-            {
-                health.HealthStatus = "unhealthy";
-            }
 
+            foreach (var function in _dependenciesHealthCheckFunctions)
+            {
+                var result = await function();
+                if (result.ToLower() != "Healthy".ToLower())
+                {
+                    health.HealthStatus = "unhealthy";
+                    break;
+                }
+            }
+            
             return health.HealthStatus;
         }
 
