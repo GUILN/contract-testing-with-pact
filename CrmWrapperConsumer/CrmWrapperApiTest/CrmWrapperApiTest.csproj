@@ -26,4 +26,9 @@
       <ProjectReference Include="..\CrmWrapperApi\CrmWrapperApi.csproj" />
     </ItemGroup>
 
+    <ItemGroup>
+      <Folder Include="Contract\Logs" />
+      <Folder Include="Contract\Pacts" />
+    </ItemGroup>
+
 </Project>

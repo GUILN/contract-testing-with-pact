@@ -1,6 +1,7 @@
 using System;
 using PactNet;
 using PactNet.Mocks.MockHttpService;
+using PactNet.Models;
 
 namespace CrmWrapperApiTest.Contract
 {
@@ -9,7 +10,7 @@ namespace CrmWrapperApiTest.Contract
         public IPactBuilder PactBuilder { get; private set; }
         public IMockProviderService MockProviderService { get; private set; }
 
-        public int MockServerPort => 9222;
+        public int MockServerPort => 9088;
         public string MockProviderServiceBaseUri => $"http://localhost:{MockServerPort}";
 
         public ConsumerOwnBrandsApiPact()
@@ -27,7 +28,7 @@ namespace CrmWrapperApiTest.Contract
 
         private PactConfig GetPactConfiguration => new()
         {
-            PactDir = @"../pacts",
+            PactDir = @"../Pacts",
             LogDir = @"../Logs"
         };
         
