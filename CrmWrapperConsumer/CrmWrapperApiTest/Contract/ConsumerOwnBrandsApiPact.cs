@@ -1,4 +1,5 @@
 using System;
+using System.IO;
 using PactNet;
 using PactNet.Mocks.MockHttpService;
 using PactNet.Models;
@@ -28,8 +29,8 @@ namespace CrmWrapperApiTest.Contract
 
         private PactConfig GetPactConfiguration => new()
         {
-            PactDir = @"../Pacts",
-            LogDir = @"../Logs"
+            PactDir = Path.Join(Directory.GetCurrentDirectory(), "Pacts"),
+            LogDir = Path.Join(Directory.GetCurrentDirectory(), "Logs")
         };
         
         public void Dispose()

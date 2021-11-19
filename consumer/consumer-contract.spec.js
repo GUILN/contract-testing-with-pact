@@ -8,8 +8,8 @@ path = require('path');
 const PORT = producerPort;
 
 const provider = new Pact({
-    consumer: 'Consumer',
-    provider: 'Provider',
+    consumer: 'CrmWrapper-Consumer',
+    provider: 'OwnBrands-Provider',
     port: PORT,
     log: path.resolve(process.cwd(), 'logs', 'pact.log'),
     dir: path.resolve(process.cwd(), 'pacts'),
@@ -30,9 +30,10 @@ describe('Own Brands Service', () => {
             },  
             willRespondWith: {
               status: 200,
-              body: eachLike(
-                'healthy'
-              ),  
+              body: 'healthy',  
+              headers: {
+                'Content-Type': 'text/html; charset=utf-8'
+              },
             },  
           }); 
         })  

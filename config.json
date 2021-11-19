@@ -1,4 +1,5 @@
 {
     "consumer-port": 3002,
-    "producer-port": 3040
+    "producer-port": 3051,
+    "pact-broker-url": "http://localhost:9292"
 }

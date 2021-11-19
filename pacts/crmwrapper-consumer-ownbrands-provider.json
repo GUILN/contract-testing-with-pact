@@ -1,9 +1,9 @@
 {
   "consumer": {
-    "name": "Consumer"
+    "name": "CrmWrapper-Consumer"
   },
   "provider": {
-    "name": "Provider"
+    "name": "OwnBrands-Provider"
   },
   "interactions": [
     {
@@ -15,18 +15,9 @@
       "response": {
         "status": 200,
         "headers": {
+          "Content-Type": "text/html; charset=utf-8"
         },
-        "body": [
-          "healthy"
-        ],
-        "matchingRules": {
-          "$.body": {
-            "min": 1
-          },
-          "$.body[*].*": {
-            "match": "type"
-          }
-        }
+        "body": "healthy"
       }
     }
   ],
